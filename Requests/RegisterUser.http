@@ -1,0 +1,26 @@
+
+# POST http://localhost:5262/api/Auth/Register
+# Content-Type: application/json
+
+# {
+#     "Username": "AhmedRadwan",
+#     "Email" : "AhmedRadwan@gmail.com",
+#     "Password": "Ahmed123@"
+# }
+
+# # eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZDJkYjJhMS1lYTNjLTQwOGQtOTQ0My1kMTkxMGUyOWY4MmMiLCJqdGkiOiIzNDA2Zjk3My0xNzI4LTQwZmEtODBkZC1mNmNjNjA1YTIyMGIiLCJlbWFpbCI6IkFobWVkUmFkd2FuQGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwibmJmIjoxNzYzNTYyMzE4LCJleHAiOjE3NjM1NjQxMTgsImlhdCI6MTc2MzU2MjMxOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MjYyIn0.oiKYzp-L4jqUUCAYze8cTaYT9X8qgJt6S-VG8fHNGbs
+# ###
+# GET http://localhost:5262/api/Auth/Mahmoud1Radwan@gmail.com
+
+
+
+
+
+
+
+
+
+POST http://localhost:5262/api/Like/750a36b4-4b4c-4656-8a7c-076173dcac5e
+Content-Type: application/json
+
+# Authorization: Bearer 
