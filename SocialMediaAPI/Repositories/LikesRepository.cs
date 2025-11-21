@@ -5,7 +5,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-public class LikeRepository(IAuthService authService,Appdbcontext appdbcontext) : ILikeServices
+public class LikeRepository(IAuthService authService,Appdbcontext appdbcontext, INotificationServices notificationServices) : ILikeServices
 {
     public async Task<ResponseModel> UnLikePostAsync(Guid postId)
     {
@@ -44,8 +44,11 @@ public class LikeRepository(IAuthService authService,Appdbcontext appdbcontext) 
 
         await appdbcontext.Likes.AddAsync(like);
         var isSucces = await appdbcontext.SaveChangesAsync();
-        return isSucces > 0 ? new ResponseModel(Succes:true, message: "LikePost Sucess"):
-            new ResponseModel(message: "LikePost Falid");
+        if (isSucces <= 0)
+            return new ResponseModel(message: "LikePost Falid");
+
+        await notificationServices.NewLikeAsync(result.UserId);
+        return new ResponseModel(Succes:true, message: "LikePost Sucess");
     }
     public async Task<int> GetLikesCountAsync(Guid postId)
     {

@@ -1,0 +1,223 @@
+🚀 SOCIAL MEDIA API – Full Backend Roadmap (ASP.NET Core)
+Contains everything you need: Users, Posts, Comments, Likes, Followers, Notifications.
+
+✅ STEP 1 — Project Setup
+
+
+Create a new Web API project:
+
+
+dotnet new webapi -n SocialMediaAPI
+
+
+
+Install needed packages:
+
+
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.AspNetCore.Authentication.JwtBearer
+AutoMapper.Extensions.Microsoft.DependencyInjection
+SignalR
+CloudinaryDotNet (for image upload)
+
+
+
+Create folders:
+
+
+/Models
+/DTOs
+/Controllers
+/Services
+/Repositories
+/Data
+/Mappings
+
+
+
+✅ STEP 2 — Database ERD (Very Important)
+Here is the exact database structure you should create:
+User
+Id (string)
+UserName
+Email
+PasswordHash
+Bio
+ProfilePhotoUrl
+DateCreated
+
+Post
+Id (int)
+UserId (FK)
+Content (text)
+ImageUrl
+CreatedAt
+
+
+Comment
+Id (int)
+PostId (FK)
+UserId (FK)
+Content
+CreatedAt
+
+
+Like
+UserId (FK)
+PostId (FK)
+CreatedAt
+
+
+Follower
+FollowerId (FK)
+FollowingId (FK)
+CreatedAt
+
+
+Notification
+Id
+UserId (user who receives notification)
+Message
+IsRead
+CreatedAt
+
+
+
+✅ STEP 3 — User Authentication (JWT + Identity)
+Features:
+✔ Register
+✔ Login
+✔ JWT token generation
+✔ Roles (User, Admin)
+✔ User profile editing
+You’ll build an AuthController with:
+
+Register
+Login
+Refresh Token
+GetCurrentUser
+
+
+
+✅ STEP 4 — Posts Module
+✔ Create Post
+✔ Get all posts
+✔ Get posts by user
+✔ Update/Delete post
+✔ Image upload (Cloudinary recommended)
+PostController endpoints:
+POST /api/posts
+GET /api/posts
+GET /api/posts/user/{userId}
+PUT /api/posts/{id}
+DELETE /api/posts/{id}
+
+
+✅ STEP 5 — Comments Module
+✔ Add comment
+✔ Get comments for post
+✔ Delete comment
+Endpoints:
+POST /api/comments
+GET /api/comments/post/{postId}
+DELETE /api/comments/{id}
+
+
+✅ STEP 6 — Likes Module
+✔ Like a post
+✔ Unlike a post
+✔ Count likes
+Endpoints:
+POST /api/likes/{postId}
+DELETE /api/likes/{postId}
+GET /api/likes/count/{postId}
+
+
+✅ STEP 7 — Following System
+✔ Follow
+✔ Unfollow
+✔ Get followers
+✔ Get following list
+Endpoints:
+POST /api/follow/{userId}
+DELETE /api/follow/{userId}
+GET /api/follow/followers/{userId}
+GET /api/follow/following/{userId}
+
+Logic:
+
+
+This is a many-to-many relation (FollowerId → FollowingId).
+
+
+A user cannot follow themselves.
+
+
+
+✅ STEP 8 — Notifications System
+Notifications for:
+New like
+New comment
+New follower
+
+
+Notification object:
+Id
+UserId  <-- who receives the notification
+Message
+IsRead
+CreatedAt
+
+Endpoints:
+GET /api/notifications
+PUT /api/notifications/read/{id}
+
+
+✅ STEP 9 — SignalR Real-Time System
+Use SignalR to send instant notifications.
+Create Hub:
+NotificationHub.cs
+public class NotificationHub : Hub
+{
+}
+
+When user likes/comment/follows:
+Inside service:
+await _hub.Clients.User(targetUserId)
+    .SendAsync("ReceiveNotification", message);
+
+Client receives event:
+connection.on("ReceiveNotification", message => {
+    console.log(message);
+});
+
+
+✅ STEP 10 — Clean Architecture (Recommended)
+Move logic into:
+/Repositories
+/Services
+DTOs + AutoMapper
+Register in Program.cs
+Dependency Injection everywhere
+
+
+This makes your API professional.
+
+🎯 Want Me to Build It for You?
+I can generate:
+✅ Full project structure
+✅ All models
+✅ All DTOs
+✅ All controllers
+✅ All services + interfaces
+✅ Full clean architecture
+✅ SignalR hub code
+✅ Full SQL ERD
+✅ Real code with JWT authentication
+✅ Ready-to-run .NET API
+Just tell me:
+👉 “Generate the full Social Media API code”
+or
+👉 “Start with Models and DbContext”

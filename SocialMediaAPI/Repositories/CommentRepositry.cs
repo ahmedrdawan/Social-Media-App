@@ -5,7 +5,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-public class CommentRepository(IAuthService authService,Appdbcontext appdbcontext) : ICommentServices
+public class CommentRepository(IAuthService authService,Appdbcontext appdbcontext, INotificationServices notificationServices) : ICommentServices
 {
     public async Task<ResponseModel> AddCommentAsync(string id, Comment comment)
     {
@@ -17,8 +17,14 @@ public class CommentRepository(IAuthService authService,Appdbcontext appdbcontex
         await appdbcontext.Comments.AddAsync(comment);
 
         var Issaved = await appdbcontext.SaveChangesAsync();
-        return Issaved > 0 ? new ResponseModel { Succes = true, message = "Comment added successfully" } :
-            new ResponseModel { message = "Failed to add comment" };
+        if (Issaved <= 0)
+            return new ResponseModel { message = "Failed to add comment" };
+        
+        var post = await appdbcontext.Posts.FindAsync(id);
+        if(post != null)
+            await notificationServices.NewCommentAsync(post.UserId);
+        
+        return new ResponseModel { Succes = true, message = "Comment added successfully" };
     }
 
     public async Task<ResponseModel> DeleteCommentAsync(Guid commentId)

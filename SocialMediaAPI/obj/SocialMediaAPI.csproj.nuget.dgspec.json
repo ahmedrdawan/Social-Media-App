@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\VGA\\Desktop\\BlaBla\\SocialMediaAPI\\SocialMediaAPI.csproj": {}
+    "C:\\Users\\VGA\\Desktop\\BlaBla\\Social-Media-App\\SocialMediaAPI\\SocialMediaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\VGA\\Desktop\\BlaBla\\SocialMediaAPI\\SocialMediaAPI.csproj": {
+    "C:\\Users\\VGA\\Desktop\\BlaBla\\Social-Media-App\\SocialMediaAPI\\SocialMediaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\VGA\\Desktop\\BlaBla\\SocialMediaAPI\\SocialMediaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\VGA\\Desktop\\BlaBla\\Social-Media-App\\SocialMediaAPI\\SocialMediaAPI.csproj",
         "projectName": "SocialMediaAPI",
-        "projectPath": "C:\\Users\\VGA\\Desktop\\BlaBla\\SocialMediaAPI\\SocialMediaAPI.csproj",
+        "projectPath": "C:\\Users\\VGA\\Desktop\\BlaBla\\Social-Media-App\\SocialMediaAPI\\SocialMediaAPI.csproj",
         "packagesPath": "C:\\Users\\VGA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\VGA\\Desktop\\BlaBla\\SocialMediaAPI\\obj\\",
+        "outputPath": "C:\\Users\\VGA\\Desktop\\BlaBla\\Social-Media-App\\SocialMediaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

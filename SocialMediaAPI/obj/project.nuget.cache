@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9Yis/q3gxDw=",
+  "dgSpecHash": "gRZ8/BevwXQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\VGA\\Desktop\\BlaBla\\SocialMediaAPI\\SocialMediaAPI.csproj",
+  "projectFilePath": "C:\\Users\\VGA\\Desktop\\BlaBla\\Social-Media-App\\SocialMediaAPI\\SocialMediaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VGA\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\VGA\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

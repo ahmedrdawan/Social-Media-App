@@ -17,7 +17,9 @@ public class LikeController : ControllerBase
     public async Task<IActionResult> LikePost(Guid postId)
     {
         var response = await _likeServices.LikePostAsync(postId);
-        return !response.Succes ? BadRequest(response) : Ok(response);
+        if (!response.Succes)
+            return BadRequest(response);
+        return Ok(response);
     }
     [HttpDelete("{postId}")]
     public async Task<IActionResult> UnLikePost(Guid postId)

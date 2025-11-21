@@ -9,6 +9,7 @@ public class Appdbcontext(DbContextOptions<Appdbcontext> options) : IdentityDbCo
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Like> Likes { get; set; }
     public DbSet<UserFollower> UserFollowers { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

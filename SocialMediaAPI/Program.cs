@@ -46,6 +46,7 @@ builder.Services.AddScoped<IPostServices, PostRepositry>();
 builder.Services.AddScoped<ICommentServices, CommentRepository>();
 builder.Services.AddScoped<ILikeServices, LikeRepository>();
 builder.Services.AddScoped<IFollowerServices, FollowerRespositry>();
+builder.Services.AddScoped<INotificationServices, NotificationRepository>();
 
 
 

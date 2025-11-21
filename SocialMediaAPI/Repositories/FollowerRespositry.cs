@@ -4,7 +4,7 @@
 using Azure;
 using Microsoft.EntityFrameworkCore;
 
-public class FollowerRespositry(IAuthService authService, Appdbcontext appdbcontext) : IFollowerServices
+public class FollowerRespositry(IAuthService authService, Appdbcontext appdbcontext, INotificationServices notificationServices) : IFollowerServices
 {
     public async Task<ResponseModel> FollowAsync(Guid userId)
     {
@@ -26,8 +26,11 @@ public class FollowerRespositry(IAuthService authService, Appdbcontext appdbcont
         };
         await appdbcontext.UserFollowers.AddAsync(followerUser);
         int IsSave = await appdbcontext.SaveChangesAsync();
-        return IsSave > 0 ? new ResponseModel(Succes:true, message: "Created follower is Sucess"):
-            new ResponseModel(message: "Created follower is Faild");
+        if (IsSave <= 0)
+            return new ResponseModel(message: "Created follower is Faild");
+
+        await notificationServices.NewFollowAsync(userId.ToString());
+        return new ResponseModel(Succes:true, message: "Created follower is Sucess");
     }
 
     public async Task<IEnumerable<FollowResponse>> GetFollowersAsync(Guid userId)

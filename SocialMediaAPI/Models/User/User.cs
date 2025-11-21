@@ -10,6 +10,7 @@ public class User : IdentityUser
     public ICollection<Like>? Likes { get; set; }
     public ICollection<UserFollower>? Followers { get; set; }
     public ICollection<UserFollower>? Following { get; set; }
+    public ICollection<Notification>? Notifications { get; set; }
 
     public User()
     {
